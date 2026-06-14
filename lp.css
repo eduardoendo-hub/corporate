@@ -179,7 +179,7 @@ section.lit{--lit-o:1}
 .hero-title2 .ac{background:linear-gradient(100deg,var(--cyan),var(--blue));-webkit-background-clip:text;
   background-clip:text;-webkit-text-fill-color:transparent}
 .hero-title2 .hi{color:#fff;position:relative;display:inline-block}
-.hero-title2 .hi::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.14em;
+.hero-title2 .hi::after{content:"";position:absolute;left:.07em;right:0;bottom:.04em;height:.14em;
   background:linear-gradient(90deg,var(--lime),rgba(195,235,30,0));opacity:.85}
 .hero-sub2{font-size:18.5px;color:var(--tx-2);max-width:54ch;margin:22px 0 0;text-wrap:pretty}
 .hero .hero-actions{margin-top:32px}
