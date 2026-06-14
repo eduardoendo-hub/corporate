@@ -956,6 +956,10 @@ section.lit{--lit-o:1}
 .field select{cursor:pointer}
 .lead-form .priv{font-size:11.5px;color:var(--tx-3);margin-top:14px;line-height:1.5}
 .lead-form .priv a{color:var(--blue)}
+.lead-form .consent{display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--tx-3);
+  line-height:1.45;margin:16px 0 4px;cursor:pointer}
+.lead-form .consent input{margin-top:2px;width:15px;height:15px;flex:0 0 auto;accent-color:var(--blue);cursor:pointer}
+.lead-form .consent a{color:var(--blue)}
 .form-ok{display:none;text-align:center;padding:30px 10px}
 .form-ok.show{display:block}
 .form-ok .ic{width:64px;height:64px;border-radius:50%;background:rgba(62,204,143,.14);color:var(--ok);

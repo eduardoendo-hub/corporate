@@ -23,10 +23,15 @@
     CURRENCY:        'BRL',
     // Preencher quando o Pixel entrar (deixe vazio = no-op):
     META_PIXEL_ID:   '',
-    // ─── RD Station (preencher na etapa de integração com o RD) ───
-    // Enquanto vazio, o envio pro RD é no-op (só IRIS + UI de sucesso).
-    RD_TOKEN:                 '',   // public token do RD Station (conversão por API)
-    RD_CONVERSION_IDENTIFIER: 'lp-corporate-impacta',
+    // ─── RD Station via backend da Impacta ─────────────────────────────
+    // A LP posta no MESMO endpoint do site atual (apiv2.impacta.com.br), que
+    // cria o lead no RD e abre a oportunidade (chave da API fica no servidor).
+    // Mantenha RD_ENABLED=false até o backend liberar CORS p/ esta origem —
+    // assim não disparamos leads de teste na produção. Em impacta.com.br/corporate
+    // (mesma origem) o CORS deixa de ser problema.
+    RD_ENABLED:               false,
+    RD_ENDPOINT:              'https://apiv2.impacta.com.br/api/v1/rdstation/corporate',
+    RD_CONVERSION_IDENTIFIER: 'soluções corporativas',
   };
 
   var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
@@ -111,27 +116,33 @@
 
   // ─── 5. Formulário de lead → IRIS + RD Station ────────────────────────────
   function sendToRD(payload) {
-    // No-op até o token do RD ser configurado (etapa "integração com o RD").
-    if (!CFG.RD_TOKEN) return Promise.resolve();
+    // Posta no backend da Impacta (mesmo endpoint do site atual) que cria o lead
+    // no RD e abre a oportunidade. No-op enquanto RD_ENABLED=false (espera CORS).
+    if (!CFG.RD_ENABLED) return Promise.resolve();
     var p = getTrackingParams();
     var body = {
-      token_rdstation: CFG.RD_TOKEN,
-      identificador:   CFG.RD_CONVERSION_IDENTIFIER,
-      nome:            payload.nome,
-      email:           payload.email,
-      telefone:        payload.telefone,
-      empresa:         payload.empresa,
-      cargo:           '',
-      // campos personalizados / UTM para atribuição no RD:
-      porte:           payload.porte,
-      interesse:       payload.interesse,
-      mensagem:        payload.msg,
-      traffic_source:  p.utm_source,
-      traffic_medium:  p.utm_medium,
-      traffic_campaign:p.utm_campaign,
-      traffic_value:   p.utm_content
+      conversion_identifier: CFG.RD_CONVERSION_IDENTIFIER,   // "soluções corporativas"
+      pessoa:    payload.nome,
+      email:     payload.email,
+      telefone:  payload.telefone,
+      empresa:   payload.empresa,
+      produto:   payload.interesse,   // mapeia "Solução de interesse" -> produto
+      tamanho:   payload.porte,       // "Nº de colaboradores" -> tamanho
+      cargo:     payload.cargo,
+      consentimento_email: payload.consent ? 'true' : 'false',
+      mensagem:  payload.msg,
+      // atribuição (de onde veio o lead) — RD usa traffic_*; mandamos também utm_*
+      traffic_source:   p.utm_source   || null,
+      traffic_medium:   p.utm_medium   || null,
+      traffic_campaign: p.utm_campaign || null,
+      traffic_value:    p.utm_content  || null,
+      utm_source:   p.utm_source   || null,
+      utm_medium:   p.utm_medium   || null,
+      utm_campaign: p.utm_campaign || null,
+      utm_content:  p.utm_content  || null,
+      utm_term:     p.utm_term     || null
     };
-    return fetch('https://www.rdstation.com.br/api/1.3/conversions', {
+    return fetch(CFG.RD_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
@@ -153,6 +164,8 @@
         empresa:   (f.empresa   && f.empresa.value   || '').trim(),
         porte:     (f.porte     && f.porte.value     || ''),
         interesse: (f.interesse && f.interesse.value || ''),
+        cargo:     (f.cargo     && f.cargo.value     || ''),
+        consent:   !!(f.consent && f.consent.checked),
         msg:       (f.msg       && f.msg.value       || '').trim()
       };
       // IRIS: evento de lead (sem PII sensível — empresa/interesse para o cockpit)
