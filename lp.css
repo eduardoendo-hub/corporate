@@ -1141,6 +1141,8 @@ section.lit{--lit-o:1}
 .ia-band h2 em{color:var(--blue-2);font-style:normal}
 .ia-band p{color:var(--tx-2);font-size:16px;line-height:1.6;max-width:64ch;margin:14px 0 24px}
 .ia-band-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ia-band-cta .btn{border-radius:999px}
+.ia-band-cta .btn:hover{transform:translateY(-3px)}
 @media(max-width:680px){.ia-band-inner{padding:26px 22px}.ia-band-cta{gap:10px}.ia-band-cta .btn{width:100%;justify-content:center}}
 
 @media(max-width:1000px){.kb-grid{grid-template-columns:repeat(2,1fr)}}
