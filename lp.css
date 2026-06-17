@@ -1190,6 +1190,8 @@ section.lit{--lit-o:1}
 
 /* ===== Áreas de conhecimento (in-company) ===== */
 .areas2{background:var(--s0)}
+/* grupos in-company SEMPRE visíveis — não dependem de JS/observer/animação */
+.areas2 .reveal{opacity:1;transform:none}
 .area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:46px}
 .area-card{display:flex;flex-direction:column;padding:28px 24px;background:var(--s1);border:1px solid var(--line);border-radius:18px;transition:border-color .18s,transform .18s,background .18s}
 .area-card:hover{border-color:var(--line-2);transform:translateY(-3px);background:var(--s2)}
