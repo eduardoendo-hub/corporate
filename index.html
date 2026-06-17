@@ -10,7 +10,9 @@
 <meta name="author" content="Faculdade Impacta">
 <meta name="theme-color" content="#070910">
 <link rel="canonical" href="https://www.impacta.com.br/corporate">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232E78C9'/%3E%3Ctext x='50%25' y='54%25' font-family='Arial' font-size='38' font-weight='700' fill='%23fff' text-anchor='middle' dominant-baseline='middle'%3EI%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="favicon.ico">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -131,7 +133,7 @@
   <div class="hero-scrim"></div>
   <div class="container hero-wrap">
     <div class="hero-content">
-      <h1 class="hero-title2">Mais <span class="hi">inteligência</span> no trabalho.<br><span class="ac">Mais resultado para o negócio.</span></h1>
+      <h1 class="hero-title2">Treinamento corporativo para mais <span class="hi">inteligência</span> no trabalho<br>e <span class="ac">mais resultado para o negócio.</span></h1>
       <p class="hero-sub2">Educação corporativa de alto impacto em IA, Dados e Office, com certificações oficiais e aplicação prática para preparar sua empresa para crescer mais rápido do que o mercado.</p>
       <div class="hero-trust">
         <div class="ht"><span class="v">35<small>+</small></span><span class="l">anos</span></div>
@@ -1114,10 +1116,16 @@
 /* ---- Reveal on scroll ---- */
 (function(){
   const els=[...document.querySelectorAll('.reveal')];
+  const show=e=>e.classList.add('in');
+  if(!('IntersectionObserver' in window)){els.forEach(show);return;}
   const io=new IntersectionObserver((es)=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.12});
+    es.forEach(e=>{if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});
+  },{rootMargin:'0px 0px -8% 0px'});
   els.forEach(e=>io.observe(e));
+  // rede de segurança: se o observer não disparar (ex.: elemento muito alto), revela ao rolar/carregar
+  const sweep=()=>{const vh=innerHeight;els.forEach(e=>{if(!e.classList.contains('in')&&e.getBoundingClientRect().top<vh*1.1)show(e);});};
+  addEventListener('scroll',sweep,{passive:true});
+  addEventListener('load',()=>setTimeout(sweep,200));
 })();
 
 /* ---- Count-up stats ---- */
