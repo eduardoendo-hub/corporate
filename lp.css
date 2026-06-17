@@ -1138,7 +1138,7 @@ section.lit{--lit-o:1}
 /* ===== DESTAQUE IA acima da dobra (ia-band) ===== */
 .ia-band{background:var(--deep);border-bottom:1px solid var(--line);padding:38px 0}
 .ia-band-inner{position:relative;overflow:hidden;border:1px solid var(--line-2);border-radius:18px;padding:56px 48px;
-  background:radial-gradient(125% 130% at 82% 80%, rgba(236,80,58,.5) 0%, rgba(196,58,42,.28) 26%, rgba(130,42,32,.12) 46%, rgba(74,26,22,0) 70%), linear-gradient(160deg,#0a1326 0%,#07101f 55%,#04060c 100%)}
+  background:radial-gradient(120% 130% at 80% 88%, rgba(214,66,50,.22) 0%, rgba(130,44,34,.1) 36%, rgba(40,20,16,0) 64%), linear-gradient(160deg,#101114 0%,#0b0c0f 55%,#060607 100%)}
 .ia-band-inner--center{text-align:center}
 .ia-band-inner--center .ia-band-badge{margin-left:auto;margin-right:auto}
 .ia-band-inner--center h2{max-width:24ch;margin-left:auto;margin-right:auto}
@@ -1146,15 +1146,15 @@ section.lit{--lit-o:1}
 .ia-band-inner--center .ia-band-cta{justify-content:center}
 /* fundo de fluxo (mesmo do hero da página de IA) */
 .iap-flow{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none}
-.iap-flow .iaf-band{opacity:.64}
+.iap-flow .iaf-band{opacity:.42}
 .iap-flow .iaf-fl,.iap-flow .iaf-blue,.iap-flow .iaf-glow,.iap-flow .iaf-red,.iap-flow .iaf-pulse{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke}
-.iap-flow .iaf-fl{stroke:rgba(162,188,232,.2);stroke-width:1.1}
-.iap-flow .iaf-blue{stroke:rgba(216,232,255,.82);stroke-width:1.7}
-.iap-flow .iaf-glow-b{stroke:rgba(120,170,255,.55);stroke-width:3.6}
-.iap-flow .iaf-red{stroke:rgba(255,82,62,1);stroke-width:2}
-.iap-flow .iaf-glow-r{stroke:rgba(255,54,42,.74);stroke-width:7}
-.iap-flow .iaf-pulse{stroke:rgba(255,176,146,.95);stroke-width:2.7;stroke-dasharray:24 2000;animation:iaPulseFlow 4.2s linear infinite}
-.iap-flow .iaf-pulse-b{stroke:rgba(196,224,255,.92);animation:iaPulseFlow 5.6s linear infinite;animation-delay:-2.2s}
+.iap-flow .iaf-fl{stroke:rgba(190,194,204,.13);stroke-width:1}
+.iap-flow .iaf-blue{stroke:rgba(228,231,238,.5);stroke-width:1.3}
+.iap-flow .iaf-glow-b{stroke:rgba(170,176,190,.22);stroke-width:3}
+.iap-flow .iaf-red{stroke:rgba(234,82,62,.72);stroke-width:1.5}
+.iap-flow .iaf-glow-r{stroke:rgba(216,58,46,.4);stroke-width:5}
+.iap-flow .iaf-pulse{stroke:rgba(240,212,198,.7);stroke-width:2.2;stroke-dasharray:24 2000;animation:iaPulseFlow 4.2s linear infinite}
+.iap-flow .iaf-pulse-b{stroke:rgba(224,228,236,.6);animation:iaPulseFlow 5.6s linear infinite;animation-delay:-2.2s}
 @keyframes iaPulseFlow{from{stroke-dashoffset:0}to{stroke-dashoffset:-2024}}
 .iap-flow-g{animation:iaFlowDrift 17s ease-in-out infinite alternate}
 @keyframes iaFlowDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-44px,28px,0)}}
