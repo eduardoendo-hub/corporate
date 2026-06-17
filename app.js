@@ -29,7 +29,7 @@
     // Mantenha RD_ENABLED=false até o backend liberar CORS p/ esta origem —
     // assim não disparamos leads de teste na produção. Em impacta.com.br/corporate
     // (mesma origem) o CORS deixa de ser problema.
-    RD_ENABLED:               false,
+    RD_ENABLED:               true,
     RD_ENDPOINT:              'https://apiv2.impacta.com.br/api/v1/rdstation/corporate',
     RD_CONVERSION_IDENTIFIER: 'soluções corporativas',
   };
