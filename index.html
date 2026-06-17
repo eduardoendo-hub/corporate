@@ -149,14 +149,43 @@
 <!-- ===== DESTAQUE IA (acima da dobra) ===== -->
 <section class="ia-band" id="ia-destaque">
   <div class="container">
-    <div class="ia-band-inner reveal">
-      <span class="ia-band-mesh" aria-hidden="true"></span>
+    <div class="ia-band-inner ia-band-inner--center reveal">
+      <svg class="iap-flow" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="iaFoldA" x1="0.1" y1="0" x2="0.3" y2="1">
+            <stop offset="0" stop-color="#0b1730" stop-opacity="0"/>
+            <stop offset="0.5" stop-color="#17273f" stop-opacity="0.6"/>
+            <stop offset="1" stop-color="#070d1c" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="iaFoldB" x1="0.1" y1="0" x2="0.35" y2="1">
+            <stop offset="0" stop-color="#1a0e16" stop-opacity="0"/>
+            <stop offset="0.55" stop-color="#2a121a" stop-opacity="0.55"/>
+            <stop offset="1" stop-color="#0a0610" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="iaGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+        </defs>
+        <g class="iap-flow-g">
+          <path class="iaf-band" d="M-100 340 C 420 220, 900 560, 1540 300 L1540 470 C 900 700, 420 380, -100 500 Z" fill="url(#iaFoldA)"/>
+          <path class="iaf-band" d="M-100 600 C 460 450, 960 800, 1540 560 L1540 760 C 960 980, 460 640, -100 760 Z" fill="url(#iaFoldB)"/>
+          <path class="iaf-fl" d="M-80 300 C 380 190, 840 470, 1540 270"/>
+          <path class="iaf-fl" d="M-80 440 C 400 310, 870 610, 1540 410"/>
+          <path class="iaf-fl" d="M-80 560 C 420 420, 900 730, 1540 540"/>
+          <path class="iaf-glow iaf-glow-b" d="M-80 380 C 380 250, 870 540, 1540 330" filter="url(#iaGlow)"/>
+          <path class="iaf-blue" d="M-80 380 C 380 250, 870 540, 1540 330"/>
+          <path class="iaf-pulse iaf-pulse-b" d="M-80 380 C 380 250, 870 540, 1540 330"/>
+          <path class="iaf-glow iaf-glow-r" d="M-80 720 C 470 560, 970 880, 1540 690" filter="url(#iaGlow)"/>
+          <path class="iaf-red" d="M-80 720 C 470 560, 970 880, 1540 690"/>
+          <path class="iaf-pulse" d="M-80 720 C 470 560, 970 880, 1540 690"/>
+          <path class="iaf-glow iaf-glow-r" d="M-80 830 C 490 670, 990 960, 1540 800" filter="url(#iaGlow)"/>
+          <path class="iaf-red" d="M-80 830 C 490 670, 990 960, 1540 800"/>
+        </g>
+      </svg>
       <span class="ia-band-badge">Novo · Ecossistema de IA Corporativa</span>
-      <h2>Tire sua empresa do discurso de IA para <em>processo, cultura e resultado</em>.</h2>
+      <h2>Tire sua empresa do discurso de <em>Inteligência Artificial</em> para processo, cultura e resultado.</h2>
       <p>Programas para líderes, RH, áreas de negócio e times técnicos aplicarem IA com produtividade, governança e métricas — com a autoridade da Impacta e do Olhar Digital, referência em tecnologia e IA no Brasil.</p>
       <div class="ia-band-cta">
         <a href="https://ia-corporate.technowhub.ai/" target="_blank" rel="noopener" class="btn btn--primary btn--lg" data-cta="proposta">Conhecer o Ecossistema de IA <span class="ar">→</span></a>
-        <a href="#contato" class="btn btn--ghost">Agendar diagnóstico de IA</a>
+        <a href="https://ia-corporate.technowhub.ai/" target="_blank" rel="noopener" class="btn btn--ghost" data-cta="proposta">Agendar diagnóstico de IA</a>
         <a href="#subpartes" class="btn btn--ghost">Ver todas as soluções</a>
       </div>
     </div>
